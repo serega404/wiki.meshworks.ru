@@ -77,6 +77,7 @@ breadcrumbs: ["База знаний Meshtastic", "Русскоязычные с
 | Самара | [@meshtastic_63](https://t.me/meshtastic_63) |
 | Санкт-Петербург | [@meshtastic_spb](https://t.me/meshtastic_spb) |
 | Саратов | [@meshtastic64](https://t.me/meshtastic64) |
+| Саранск | [@meshtastic_saransk](https://t.me/meshtastic_saransk) |
 | Севастополь | [@meshtastic_sevastopol](https://t.me/meshtastic_sevastopol) |
 | Серпухов | [@Meshtastic_BigSERP](https://t.me/Meshtastic_BigSERP) |
 | Смоленск | [@meshtastic_sml](https://t.me/meshtastic_sml) |
