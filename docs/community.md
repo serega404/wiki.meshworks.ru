@@ -94,6 +94,7 @@ breadcrumbs: ["База знаний Meshtastic", "Русскоязычные с
 | Ульяновск | [@meshtastic_ulsk](https://t.me/meshtastic_ulsk) |
 | Уфа | [@meshtastic_ufa](https://t.me/meshtastic_ufa) |
 | Феодосия | [@meshtastic_feo](https://t.me/meshtastic_feo) |
+| Хабаровск | [@meshtastic_khv](https://t.me/meshtastic_khv) |
 | Ханты-Мансийск | [@meshtastic_hm](https://t.me/meshtastic_hm) |
 | Челябинск | [@meshtastic_chel](https://t.me/meshtastic_chel) |
 | Чехов | [@Meshtastic_Chekhov](https://t.me/Meshtastic_Chekhov) |
