@@ -43,7 +43,7 @@ breadcrumbs: ["База знаний Meshtastic", "Русскоязычные с
 | Ижевск | [@meshtastic_izh18](https://t.me/meshtastic_izh18) |
 | Иркутск | [@meshtastic_irk](https://t.me/meshtastic_irk) |
 | Казань | [@ham_radio_kazan](https://t.me/ham_radio_kazan) |
-| Казахстан | [meshtastic.kz](https://meshtastic.kz/) - [@meshtkz](https://t.me/meshtkz) / [@meshtastic_kz](https://t.me/meshtastic_kz) |
+| Казахстан / Астана / Алматы | [meshtastic.kz](https://meshtastic.kz/) - [@meshtkz](https://t.me/meshtkz) / [@meshtastic_kz](https://t.me/meshtastic_kz) |
 | Калининград | [@meshtastic_39](https://t.me/meshtastic_39) |
 | Калуга | [@meshtastic_kaluga](https://t.me/meshtastic_kaluga) |
 | Камчатка | [@meshtastic_kam](https://t.me/meshtastic_kam) |
