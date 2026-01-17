@@ -176,7 +176,12 @@ const config: Config = {
           changefreq: 'daily',
           priority: 0.7,
           filename: 'sitemap.xml',
-          ignorePatterns: ['**/search/**', '**/custom-pages/**'],
+          ignorePatterns: [
+            '**/search',
+            '**/search/**',
+            '**/custom-pages',
+            '**/custom-pages/**',
+          ],
         },
       } satisfies Preset.Options,
     ],
