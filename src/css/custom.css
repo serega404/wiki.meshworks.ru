@@ -1,10 +1,8 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Global theme overrides for Docusaurus classic.
  */
 
-/* You can override the default Infima variables here. */
+/* === Base Tokens === */
 :root {
   --ifm-color-primary: #7eb81b;
   --ifm-color-primary-dark: #6da116;
@@ -15,12 +13,14 @@
   --ifm-color-primary-lightest: #b5e574;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
   --ifm-navbar-background-color: #ffffff;
   --ifm-footer-background-color: var(--ifm-navbar-background-color);
   --ifm-footer-color: #1b1f28;
   --ifm-footer-title-color: #1b1f28;
   --ifm-footer-link-color: #1b1f28;
   --ifm-footer-link-hover-color: #5d8c13;
+
   --mesh-alert-radius: 6px;
   --mesh-alert-text-color: #1a1c1f;
   --mesh-alert-neutral-bg: #ffffff;
@@ -44,6 +44,7 @@
   --mesh-alert-favorite-bg: rgba(255, 247, 227, 0.5);
   --mesh-alert-favorite-border: rgba(246, 213, 150, 0.35);
   --mesh-alert-favorite-icon: #d08e1f;
+
   --docsearch-primary-color: var(--ifm-color-primary);
   --docsearch-text-color: var(--ifm-font-color-base);
   --docsearch-hit-color: var(--ifm-font-color-base);
@@ -58,33 +59,6 @@
   --ifm-footer-link-hover-color: #cdd9ea;
 }
 
-body {
-  font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-}
-
-.introImage {
-  border-radius: 18px;
-  margin: 1rem 0 1.5rem;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-}
-
-.docImage {
-  border-radius: 14px;
-  margin: 0.75rem 0 1.25rem;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-}
-
-[data-theme='dark'] .introImage {
-  box-shadow: 0 6px 13px rgba(0, 0, 0, 0.29), 0 0 0 1px rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.028);
-}
-
-[data-theme='dark'] .docImage {
-  box-shadow: 0 5px 11px rgba(0, 0, 0, 0.26), 0 0 0 1px rgba(255, 255, 255, 0.018);
-  border: 1px solid rgba(255, 255, 255, 0.024);
-}
-
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
   --ifm-color-primary: #7eb81b;
   --ifm-color-primary-dark: #6da116;
@@ -93,15 +67,18 @@ body {
   --ifm-color-primary-light: #8ccc2c;
   --ifm-color-primary-lighter: #99d641;
   --ifm-color-primary-lightest: #b5e574;
+
   --ifm-background-color: #111318;
   --ifm-background-surface-color: #191e25;
   --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.08);
+
   --ifm-navbar-background-color: #1e2329;
   --ifm-footer-background-color: var(--ifm-navbar-background-color);
   --ifm-footer-color: #ffffff;
   --ifm-footer-title-color: #ffffff;
   --ifm-footer-link-color: #ffffff;
   --ifm-footer-link-hover-color: #ffffff;
+
   --mesh-alert-text-color: #f7faff;
   --mesh-alert-neutral-bg: #1d202a;
   --mesh-alert-neutral-border: rgba(255, 255, 255, 0.08);
@@ -124,17 +101,40 @@ body {
   --mesh-alert-favorite-bg: #2a2115;
   --mesh-alert-favorite-border: #4a351f;
   --mesh-alert-favorite-icon: #ffd782;
+
   --docsearch-primary-color: var(--ifm-color-primary);
   --docsearch-text-color: var(--ifm-font-color-base);
 }
 
-.footer {
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  text-align: center;
-  background: var(--ifm-footer-background-color);
-  color: var(--ifm-footer-color);
+/* === Base Typography === */
+body {
+  font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
 }
 
+/* === Media === */
+.introImage {
+  border-radius: 18px;
+  margin: 1rem 0 1.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+.docImage {
+  border-radius: 14px;
+  margin: 0.75rem 0 1.25rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='dark'] .introImage {
+  border: 1px solid rgba(255, 255, 255, 0.028);
+  box-shadow: 0 6px 13px rgba(0, 0, 0, 0.29), 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+[data-theme='dark'] .docImage {
+  border: 1px solid rgba(255, 255, 255, 0.024);
+  box-shadow: 0 5px 11px rgba(0, 0, 0, 0.26), 0 0 0 1px rgba(255, 255, 255, 0.018);
+}
+
+/* === Navbar === */
 [data-theme='light'] .navbar {
   background: rgba(58, 67, 80, 0.9);
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
@@ -159,17 +159,25 @@ body {
   content: url('/img/logo-dark.png');
 }
 
-[data-theme='dark'] .footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: var(--ifm-navbar-background-color);
-}
-
 [data-theme='dark'] .navbar {
   background: rgba(30, 35, 41, 0.88);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: saturate(120%) blur(5px);
   -webkit-backdrop-filter: saturate(120%) blur(5px);
   box-shadow: 0 5px 14px rgba(0, 0, 0, 0.22);
+}
+
+/* === Footer === */
+.footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  text-align: center;
+  background: var(--ifm-footer-background-color);
+  color: var(--ifm-footer-color);
+}
+
+[data-theme='dark'] .footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--ifm-navbar-background-color);
 }
 
 .footer__links-row {
@@ -226,6 +234,7 @@ body {
   opacity: 0.9;
 }
 
+/* === Admonitions === */
 .alert {
   --mesh-alert-bg-current: var(--mesh-alert-neutral-bg);
   --mesh-alert-border-current: var(--mesh-alert-neutral-border);
@@ -307,101 +316,6 @@ body {
   --mesh-alert-icon-current: var(--mesh-alert-favorite-icon);
 }
 
-.DocSearch-Button-Placeholder {
-  position: relative;
-  color: transparent;
-  font-weight: 500;
-}
-
-.DocSearch-Button-Placeholder::after {
-  content: 'Поиск';
-  position: absolute;
-  inset: 0;
-  color: currentColor;
-}
-
-
-.navbar-icon {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.1rem 0.75rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  margin: 0;
-  font-weight: 500;
-}
-
-/* Иконки без текста (Telegram/YouTube) */
-/* icon-only styles removed: use default theme styles */
-
-[class*='navbar__items--right'] {}
-
-[class*='navbar__items--right'] .toggleButton_gllP {}
-
-[data-theme='light'] .navbar-icon {
-  border-color: rgba(0, 0, 0, 0.12);
-}
-
-[data-theme='light'] [class*='navbar__items--right'] .toggleButton_gllP {}
-
-[class*='navbar__items--right'] [class*='navbarSearchContainer'] {}
-[class*='navbar__items--right'] [class*='navbarSearchContainer'] .DocSearch-Button {}
-
-/* default spacing for theme toggle */
-[class*='navbar__items--right'] .toggle_vylO,
-[class*='navbar__items--right'] .colorModeToggle_DEke {}
-
-/* search: default positioning */
-.navbar .navbar__inner {}
-[class*='navbarSearchContainer'] {}
-[class*='navbarSearchContainer'] .navbar__search {}
-[class*='navbarSearchContainer'] .navbar__search-input {}
-[class*='navbarSearchContainer'] .navbar__search::after {}
-/* скрываем оригинальные чипы, чтобы не дублировались */
-.searchHintContainer_Pkmr, kbd.searchHint_iIMx, .navbar kbd { display: none !important; }
-/* Hotkey chips держим внутри самой кнопки */
-[class*='navbarSearchContainer'] .DocSearch-Button {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  padding-right: 2.2rem; /* место под chips */
-}
-[class*='navbarSearchContainer'] .DocSearch-Button-Keys {
-  position: absolute;
-  right: .45rem;
-  top: 50%;
-  transform: translateY(-50%);
-  margin: 0 !important;
-}
-@media (max-width: 996px) {
-  [class*='navbarSearchContainer'] {
-    position: static;
-    transform: none;
-    width: auto;
-  }
-}
-
-.navbar-icon::before {
-  font-family: 'Material Symbols Rounded';
-  font-size: 1.2rem;
-  line-height: 1;
-  color: currentColor;
-}
-
-.navbar-icon svg,
-.navbar-icon [class*='iconExternalLink'] {
-  display: none !important;
-}
-
-.navbar-icon--telegram::before {
-  content: 'send';
-}
-
-.navbar-icon--youtube::before {
-  content: 'smart_display';
-}
-
 .alert p {
   margin: 0.15rem 0;
 }
@@ -438,4 +352,83 @@ body {
 
 [data-theme='dark'] .alert--favorite::before {
   color: #ffd764;
+}
+
+/* === Search / Navbar Utilities === */
+.DocSearch-Button-Placeholder {
+  position: relative;
+  color: transparent;
+  font-weight: 500;
+}
+
+.DocSearch-Button-Placeholder::after {
+  content: 'Поиск';
+  position: absolute;
+  inset: 0;
+  color: currentColor;
+}
+
+.searchHintContainer_Pkmr,
+kbd.searchHint_iIMx,
+.navbar kbd {
+  display: none !important;
+}
+
+[class*='navbarSearchContainer'] .DocSearch-Button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding-right: 2.2rem;
+}
+
+[class*='navbarSearchContainer'] .DocSearch-Button-Keys {
+  position: absolute;
+  right: 0.45rem;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 !important;
+}
+
+@media (max-width: 996px) {
+  [class*='navbarSearchContainer'] {
+    position: static;
+    transform: none;
+    width: auto;
+  }
+}
+
+/* === Social Navbar Icons === */
+.navbar-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.1rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  margin: 0;
+  font-weight: 500;
+}
+
+[data-theme='light'] .navbar-icon {
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.navbar-icon::before {
+  font-family: 'Material Symbols Rounded';
+  font-size: 1.2rem;
+  line-height: 1;
+  color: currentColor;
+}
+
+.navbar-icon svg,
+.navbar-icon [class*='iconExternalLink'] {
+  display: none !important;
+}
+
+.navbar-icon--telegram::before {
+  content: 'send';
+}
+
+.navbar-icon--youtube::before {
+  content: 'smart_display';
 }
