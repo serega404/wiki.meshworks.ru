@@ -28,6 +28,8 @@
   --ifm-footer-link-hover-color: #3f95dd;
   --ifm-font-color-base: #1e2630;
   --ifm-heading-color: #1e2630;
+  --ifm-heading-font-weight: 620;
+  --ifm-font-weight-bold: 620;
   --mesh-alert-radius: 6px;
   --mesh-alert-text-color: #1a1c1f;
   --mesh-alert-neutral-bg: #f3f6fb;
@@ -68,6 +70,7 @@
   --ifm-background-surface-color: #f7f8fa;
   --ifm-font-color-base: #344054;
   --ifm-heading-color: #1f2937;
+  --ifm-heading-font-weight: 620;
   --ifm-navbar-background-color: #3a4350;
   --ifm-footer-background-color: var(--ifm-navbar-background-color);
   --ifm-footer-color: #f0f4fb;
@@ -165,7 +168,7 @@
 }
 
 body {
-  font-family: 'Manrope', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+  font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
 }
 
 .button--secondary,
@@ -237,6 +240,7 @@ body {
   --ifm-footer-link-hover-color: var(--ifm-color-primary);
   --ifm-font-color-base: #e3e9f0;
   --ifm-heading-color: #eef4fb;
+  --ifm-heading-font-weight: 620;
   --mesh-alert-text-color: #eef4f8;
   --mesh-alert-neutral-bg: #242a33;
   --mesh-alert-neutral-border: #3b4656;
@@ -402,7 +406,7 @@ body {
   padding-top: 0;
   font-size: clamp(1.45rem, 2.2vw, 2rem);
   line-height: 1.18;
-  font-weight: 650;
+  font-weight: 620;
   letter-spacing: -0.01em;
   text-wrap: balance;
 }
@@ -666,7 +670,7 @@ body {
 /* --- Modern Docs Refresh --- */
 .theme-doc-markdown {
   font-size: 1.04rem;
-  line-height: 1.65;
+  line-height: 1.56;
   position: relative;
   z-index: 0;
 }
@@ -698,7 +702,7 @@ body {
 
 .theme-doc-markdown > header h1 {
   font-size: clamp(1.4rem, 2vw, 1.85rem);
-  font-weight: 650;
+  font-weight: 620;
   line-height: 1.2;
 }
 
@@ -747,7 +751,7 @@ body {
 .mdx-page article,
 .mdx-wrapper article {
   font-size: 1.04rem;
-  line-height: 1.65;
+  line-height: 1.56;
   border-radius: 14px;
   padding: 1.24rem 1.48rem;
   position: relative;
@@ -790,7 +794,7 @@ html[data-theme='dark'].mdx-wrapper article,
   position: relative;
   text-align: left;
   font-size: clamp(1.4rem, 2vw, 1.85rem);
-  font-weight: 650;
+  font-weight: 620;
   line-height: 1.2;
   letter-spacing: -0.01em;
   text-wrap: balance;
