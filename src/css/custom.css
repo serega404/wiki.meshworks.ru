@@ -444,11 +444,12 @@ kbd.searchHint_iIMx,
 
 .deviceCardRT{
   display:grid;
-  grid-template-columns:260px 1fr;
-  gap:20px;
+  grid-template-columns:331px 1fr;
+  gap:0;
+  align-items:stretch;
 
-  padding:18px 22px 44px 22px; /* важный нижний паддинг */
-  margin:24px 0;
+  padding:18px 22px 18px 22px;
+  margin:20px 0;
 
   border:1px solid rgba(255,255,255,.10);
   border-radius:12px;
@@ -462,16 +463,27 @@ kbd.searchHint_iIMx,
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:14px;
+  padding:0;
+  height:auto;
+  min-height:0;
+  aspect-ratio:1.31 / 1;
+  align-self:center;
   border-radius:10px;
   background:rgba(0,0,0,.20);
   border:1px solid rgba(255,255,255,.06);
+  box-shadow:none;
+  overflow:hidden;
+}
+
+.deviceBodyRT{
+  padding:12px 0 56px 20px;
 }
 
 .deviceImageRT img{
   width:100%;
-  max-width:240px;
-  object-fit:contain;
+  height:100%;
+  max-width:none;
+  object-fit:cover;
   display:block;
 }
 
@@ -531,35 +543,73 @@ kbd.searchHint_iIMx,
 /* ===== CTA КНОПКА (как на твоём скрине) ===== */
 
 .ctaRT{
+  display:inline-block;
   position:absolute;
   right:22px;
-  bottom:-18px; /* ВАЖНО: кнопка уходит вниз и обрезается */
+  bottom:18px;
 
-  padding:14px 28px;
-  border-radius:12px;
+  height:40px;
+  padding:0 24px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.10);
 
-  font-size:15px;
+  font-size:13px;
   font-weight:800;
-  letter-spacing:.4px;
+  letter-spacing:.34px;
+  line-height:38px;
   text-transform:uppercase;
+  white-space:nowrap;
+  text-align:center;
 
   text-decoration:none;
   color:#fff;
 
-  background:linear-gradient(90deg,#ff3b30 0%, #ffb020 100%);
+  background:var(--ifm-color-primary);
+  box-shadow:none;
 
-  box-shadow:
-    0 10px 26px rgba(0,0,0,.35),
-    inset 0 -2px 0 rgba(0,0,0,.20);
-
-  transition:transform .12s ease, box-shadow .12s ease;
+  transition:transform .12s ease, background-color .12s ease;
 }
 
 .ctaRT:hover{
   transform:translateY(-2px);
-  box-shadow:
-    0 14px 34px rgba(0,0,0,.40),
-    inset 0 -2px 0 rgba(0,0,0,.18);
+  background:var(--ifm-color-primary-dark);
+  box-shadow:none;
+}
+
+/* ===== LIGHT THEME ADAPTATION FOR DEVICE CARDS ===== */
+
+[data-theme='light'] .deviceCardRT{
+  border:1px solid rgba(17, 24, 39, .10);
+  background:#ffffff;
+}
+
+[data-theme='light'] .deviceImageRT{
+  background:#f4f7fb;
+  border:1px solid rgba(17, 24, 39, .08);
+}
+
+[data-theme='light'] .deviceTitleRT{
+  color:#1b1f28;
+}
+
+[data-theme='light'] .badgeRT{
+  background:#f2f5f9;
+  border:1px solid rgba(17, 24, 39, .10);
+  color:#2a3240;
+}
+
+[data-theme='light'] .badgeEnergyRT{
+  background:rgba(46,204,113,.14);
+  border-color:rgba(46,204,113,.35);
+  color:#1f8f4f;
+}
+
+[data-theme='light'] .deviceDescRT{
+  color:#3a4350;
+}
+
+[data-theme='light'] .priceRT{
+  color:#1f2937;
 }
 
 /* ===== АДАПТИВ ===== */
@@ -568,6 +618,15 @@ kbd.searchHint_iIMx,
   .deviceCardRT{
     grid-template-columns:1fr;
     padding-bottom:62px;
+  }
+
+  .deviceImageRT{
+    min-height:0;
+    aspect-ratio:16 / 10;
+  }
+
+  .deviceBodyRT{
+    padding:14px 0 0;
   }
 
   .ctaRT{

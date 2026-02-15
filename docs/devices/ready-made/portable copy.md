@@ -1,3 +1,29 @@
+---
+title: portable copy
+description: "Портативные готовые ноды Meshtastic в формате карточек."
+sidebar_label: portable copy
+sidebar_position: 3
+breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройства", "Готовые ноды", "portable copy"]
+---
+
+<style>{`
+  .theme-doc-markdown > h3 {
+    margin: 0;
+    height: 1px;
+    margin-bottom: -1px;
+    overflow: hidden;
+    opacity: 0.01;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .deviceBodyRT .deviceSpecsRT {
+    margin-top: 20px !important;
+  }
+`}</style>
+
+### ThinkNode M1
+
 <div class="deviceCardRT">
 
   <div class="deviceImageRT">
@@ -6,7 +32,7 @@
 
   <div class="deviceBodyRT">
 
-    <h2 class="deviceTitleRT">ThinkNode M1</h2>
+    <h3 class="deviceTitleRT">ThinkNode M1</h3>
 
     <div class="deviceSpecsRT">
       <span class="badgeRT">📱 Bluetooth</span>
@@ -36,6 +62,7 @@
 
 </div>
 
+### SenseCAP T1000-E
 
 <div class="deviceCardRT">
 
@@ -45,7 +72,7 @@
 
   <div class="deviceBodyRT">
 
-    <h2 class="deviceTitleRT">SenseCAP T1000-E</h2>
+    <h3 class="deviceTitleRT">SenseCAP T1000-E</h3>
 
     <div class="deviceSpecsRT">
       <span class="badgeRT">📱 Bluetooth</span>
@@ -75,6 +102,7 @@
 
 </div>
 
+### Heltec MeshPocket
 
 <div class="deviceCardRT">
 
@@ -84,7 +112,7 @@
 
   <div class="deviceBodyRT">
 
-    <h2 class="deviceTitleRT">Heltec MeshPocket</h2>
+    <h3 class="deviceTitleRT">Heltec MeshPocket</h3>
 
     <div class="deviceSpecsRT">
       <span class="badgeRT">📱 Bluetooth</span>
@@ -114,6 +142,7 @@
 
 </div>
 
+### LILYGO TTGO T-Echo
 
 <div class="deviceCardRT">
 
@@ -123,7 +152,7 @@
 
   <div class="deviceBodyRT">
 
-    <h2 class="deviceTitleRT">LILYGO TTGO T-Echo</h2>
+    <h3 class="deviceTitleRT">LILYGO TTGO T-Echo</h3>
 
     <div class="deviceSpecsRT">
       <span class="badgeRT">📱 Bluetooth</span>
@@ -153,6 +182,7 @@
 
 </div>
 
+### Wio Tracker L1 Pro
 
 <div class="deviceCardRT">
 
@@ -162,7 +192,7 @@
 
   <div class="deviceBodyRT">
 
-    <h2 class="deviceTitleRT">Wio Tracker L1 Pro</h2>
+    <h3 class="deviceTitleRT">Wio Tracker L1 Pro</h3>
 
     <div class="deviceSpecsRT">
       <span class="badgeRT">📱 Bluetooth</span>
@@ -192,6 +222,7 @@
 
 </div>
 
+### LILYGO T-Deck Plus
 
 <div class="deviceCardRT">
 
@@ -201,7 +232,7 @@
 
   <div class="deviceBodyRT">
 
-    <h2 class="deviceTitleRT">LILYGO T-Deck Plus</h2>
+    <h3 class="deviceTitleRT">LILYGO T-Deck Plus</h3>
 
     <div class="deviceSpecsRT">
       <span class="badgeRT">📱 Bluetooth</span>
@@ -231,6 +262,7 @@
 
 </div>
 
+### T-LoRa Pager
 
 <div class="deviceCardRT">
 
@@ -240,7 +272,7 @@
 
   <div class="deviceBodyRT">
 
-    <h2 class="deviceTitleRT">T-LoRa Pager</h2>
+    <h3 class="deviceTitleRT">T-LoRa Pager</h3>
 
     <div class="deviceSpecsRT">
       <span class="badgeRT">📱 Bluetooth</span>
@@ -270,6 +302,7 @@
 
 </div>
 
+### Meshtiny Mini Pocket
 
 <div class="deviceCardRT">
 
@@ -279,7 +312,7 @@
 
   <div class="deviceBodyRT">
 
-    <h2 class="deviceTitleRT">Meshtiny Mini Pocket</h2>
+    <h3 class="deviceTitleRT">Meshtiny Mini Pocket</h3>
 
     <div class="deviceSpecsRT">
       <span class="badgeRT">📱 Bluetooth</span>
@@ -309,6 +342,7 @@
 
 </div>
 
+### ThinkNode M1 (868 MHz)
 
 <div class="deviceCardRT">
 
@@ -318,7 +352,7 @@
 
   <div class="deviceBodyRT">
 
-    <h2 class="deviceTitleRT">ThinkNode M1 (868 MHz)</h2>
+    <h3 class="deviceTitleRT">ThinkNode M1 (868 MHz)</h3>
 
     <div class="deviceSpecsRT">
       <span class="badgeRT">📱 Bluetooth</span>
@@ -348,6 +382,7 @@
 
 </div>
 
+### TTGO T-Echo (походный вариант)
 
 <div class="deviceCardRT">
 
@@ -357,7 +392,7 @@
 
   <div class="deviceBodyRT">
 
-    <h2 class="deviceTitleRT">TTGO T-Echo (походный вариант)</h2>
+    <h3 class="deviceTitleRT">TTGO T-Echo (походный вариант)</h3>
 
     <div class="deviceSpecsRT">
       <span class="badgeRT">📱 Bluetooth</span>
