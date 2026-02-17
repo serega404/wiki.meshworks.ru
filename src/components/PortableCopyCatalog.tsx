@@ -17,6 +17,8 @@ type Device = {
   href: string;
   tech: DeviceTech;
   popular?: boolean;
+  videoHref?: string;
+  videoLabel?: string;
 };
 
 const UNIVERSAL_DEVICES: Device[] = [
@@ -221,6 +223,8 @@ const BOARDS_DEVICES: Device[] = [
     href: 'https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005007752194012.html',
     tech: 'ESP',
     popular: true,
+    videoHref: 'https://www.youtube.com/watch?v=puI6pSaGfsc',
+    videoLabel: 'Видео сборки',
   },
   {
     title: 'Heltec V4 / Heltec Wireless Stick Lite V4',
@@ -401,9 +405,16 @@ function renderDeviceCard(device: Device) {
         </div>
       </div>
 
-      <a className="ctaRT" href={device.href} target="_blank" rel="noopener noreferrer">
-        ЗАКАЗАТЬ НА ALIEXPRESS
-      </a>
+      <div className="deviceActionsRT">
+        <a className="ctaRT" href={device.href} target="_blank" rel="noopener noreferrer">
+          ЗАКАЗАТЬ НА ALIEXPRESS
+        </a>
+        {device.videoHref ? (
+          <a className="ctaVideoRT" href={device.videoHref} target="_blank" rel="noopener noreferrer">
+            {device.videoLabel ?? 'Смотреть видео'}
+          </a>
+        ) : null}
+      </div>
     </div>
   );
 }
@@ -415,6 +426,13 @@ export default function PortableCopyCatalog(): ReactNode {
         <span className="deviceHeroLineRT">Здесь вы можете подобрать ноду под свои задачи.</span>
         <span className="deviceHeroLineRT">От бюджетных плат без корпуса до полноразмерных нод с клавиатурой и цветным дисплеем.</span>
         <span className="deviceHeroLineRT">Фильтры позволяют выбрать тип ноды и тип чипа.</span>
+        <span className="deviceHeroLineRT deviceHeroMetaRT">
+          Вопросы можно уточнить в нашем{' '}
+          <a href="https://t.me/meshwrks/2751" target="_blank" rel="noopener noreferrer">
+            Telegram-чате
+          </a>
+          .
+        </span>
       </p>
       <div className="deviceHeroDividerRT" />
       <input className="deviceFilterInputRT" type="checkbox" id="filter-universal" />
@@ -434,7 +452,7 @@ export default function PortableCopyCatalog(): ReactNode {
           <div className="deviceFilterHintTextRT">Автономные комплекты для стационарных и удалённых узлов.</div>
         </label>
         <label className="deviceFilterHintRT deviceFilterHintBoardsRT" htmlFor="filter-boards">
-          <div className="deviceFilterHintTitleRT">🧩 Платы</div>
+          <div className="deviceFilterHintTitleRT">🧩 Отдельные платы</div>
           <div className="deviceFilterHintTextRT">DIY-платы и проекты для самостоятельной сборки нод.</div>
         </label>
         <div className="deviceFilterRowSepRT" />
@@ -459,7 +477,7 @@ export default function PortableCopyCatalog(): ReactNode {
             <strong>☀️ Солнечные</strong> - автономные комплекты для стационара.
           </li>
           <li>
-            <strong>🧩 Платы</strong> - DIY-платы для самостоятельной сборки.
+            <strong>🧩 Отдельные платы</strong> - DIY-платы и проекты для самостоятельной сборки.
           </li>
         </ul>
         <div className="deviceSideHelpSepRT" />
@@ -480,3 +498,4 @@ export default function PortableCopyCatalog(): ReactNode {
     </div>
   );
 }
+

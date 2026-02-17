@@ -1,9 +1,10 @@
 ---
 title: Каталог устройств
 description: "Портативные готовые ноды Meshtastic в формате карточек."
-sidebar_label: portable copy
-sidebar_position: 3
-breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройства", "Готовые ноды", "Каталог устройств"]
+slug: /catalog-devices
+sidebar_label: Каталог устройств
+sidebar_position: 1.5
+breadcrumbs: ["База знаний Meshtastic", "Каталог устройств"]
 ---
 
 import PortableCopyCatalog from '@site/src/components/PortableCopyCatalog';
@@ -24,6 +25,10 @@ import PortableCopyCatalog from '@site/src/components/PortableCopyCatalog';
   .deviceHeroLineRT {
     display: block;
     margin-top: 4px;
+  }
+  .deviceHeroMetaRT {
+    margin-top: 10px;
+    font-size: 13px;
   }
   .deviceHeroLineRT:first-child {
     margin-top: 0;
@@ -324,8 +329,70 @@ import PortableCopyCatalog from '@site/src/components/PortableCopyCatalog';
       radial-gradient(150% 130% at 100% 0%, rgba(126, 184, 27, .30) 0%, rgba(126, 184, 27, .16) 20%, rgba(126, 184, 27, .07) 34%, rgba(126, 184, 27, 0) 58%),
       rgba(255,255,255,.02) !important;
   }
+  .deviceActionsRT {
+    position: absolute;
+    right: 22px;
+    bottom: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .deviceActionsRT .ctaRT {
+    position: static;
+    right: auto;
+    bottom: auto;
+  }
+  .ctaVideoRT {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, .12);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    color: var(--ifm-font-color-base);
+    background: rgba(255, 255, 255, .04);
+    transition: background-color .12s ease, border-color .12s ease, transform .12s ease;
+  }
+  .ctaVideoRT:hover {
+    border-color: rgba(126, 184, 27, .45);
+    background: rgba(126, 184, 27, .12);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+  [data-theme='light'] .ctaVideoRT {
+    border-color: rgba(17, 24, 39, .12);
+    background: #f8fafc;
+    color: #1f2937;
+  }
+  [data-theme='light'] .ctaVideoRT:hover {
+    border-color: rgba(126, 184, 27, .55);
+    background: #eef7de;
+    color: #2f4b09;
+  }
+  @media (max-width: 860px) {
+    .deviceActionsRT {
+      left: 22px;
+      right: 22px;
+      bottom: 18px;
+      gap: 6px;
+    }
+    .deviceActionsRT .ctaRT,
+    .ctaVideoRT {
+      flex: 1 1 0;
+      width: auto;
+      padding: 0 10px;
+      justify-content: center;
+    }
+  }
 `}</style>
 
 <PortableCopyCatalog />
+
 
 
