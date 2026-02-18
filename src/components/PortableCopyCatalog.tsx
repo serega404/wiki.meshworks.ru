@@ -40,36 +40,39 @@ function renderDeviceCard(device: DeviceItem): ReactNode {
       </div>
 
       <div className={styles.deviceBody}>
-        <h3 className={styles.deviceTitle}>{device.title}</h3>
+        <div className={styles.deviceMain}>
+          <h3 className={styles.deviceTitle}>{device.title}</h3>
 
-        <div className={styles.deviceSpecs}>
-          <span className={styles.badge}>{`Чип: ${device.tech}`}</span>
-          {device.badges.map((badge) => (
-            <span className={`${styles.badge} ${badge.off ? styles.badgeOff : ''}`} key={`${device.title}-${badge.label}`}>
-              {badge.label}
-            </span>
-          ))}
+          <div className={styles.deviceSpecs}>
+            <span className={styles.badge}>{`Чип: ${device.tech}`}</span>
+            {device.badges.map((badge) => (
+              <span className={`${styles.badge} ${badge.off ? styles.badgeOff : ''}`} key={`${device.title}-${badge.label}`}>
+                {badge.label}
+              </span>
+            ))}
+          </div>
+
+          <p className={styles.deviceDesc}>
+            <span className={styles.deviceDescMain}>{device.descriptionLines[0]}</span>
+            <span className={styles.deviceDescExtra}>{device.descriptionLines[1]}</span>
+          </p>
         </div>
 
-        <p className={styles.deviceDesc}>
-          {device.descriptionLines[0]}
-          <br />
-          {device.descriptionLines[1]}
-        </p>
+        <div className={styles.deviceBottom}>
+          <div className={styles.deviceFooter}>
+            <div className={styles.price}>{device.price}</div>
+          </div>
 
-        <div className={styles.deviceFooter}>
-          <div className={styles.price}>{device.price}</div>
-        </div>
-
-        <div className={styles.deviceActions}>
-          <a className={styles.cta} href={device.href} target="_blank" rel="noopener noreferrer">
-            {device.ctaLabel ?? 'ЗАКАЗАТЬ НА ALIEXPRESS'}
-          </a>
-          {device.videoHref ? (
-            <a className={styles.ctaVideo} href={device.videoHref} target="_blank" rel="noopener noreferrer">
-              {device.videoLabel ?? 'Смотреть видео'}
+          <div className={styles.deviceActions}>
+            <a className={styles.cta} href={device.href} target="_blank" rel="noopener noreferrer">
+              {device.ctaLabel ?? 'ЗАКАЗАТЬ НА ALIEXPRESS'}
             </a>
-          ) : null}
+            {device.videoHref ? (
+              <a className={styles.ctaVideo} href={device.videoHref} target="_blank" rel="noopener noreferrer">
+                {device.videoLabel ?? 'Смотреть видео'}
+              </a>
+            ) : null}
+          </div>
         </div>
       </div>
     </article>
@@ -123,26 +126,25 @@ export default function PortableCopyCatalog(): ReactNode {
 
   return (
     <section className={styles.catalog} aria-label="Каталог устройств Meshtastic">
-      <p className={styles.heroIntro}>
-        <span className={styles.heroLine}>Здесь вы можете подобрать ноду под свои задачи.</span>
-        <span className={styles.heroLine}>От бюджетных плат без корпуса до полноразмерных нод с клавиатурой и цветным дисплеем.</span>
-        <span className={styles.heroLine}>Фильтры позволяют выбрать тип ноды и тип чипа.</span>
-        <span className={`${styles.heroLine} ${styles.heroMeta}`}>
-          Вопросы можно уточнить в нашем{' '}
-          <a href="https://t.me/meshwrks/2751" target="_blank" rel="noopener noreferrer">
-            Telegram-чате
-          </a>
-          .
-        </span>
-      </p>
+      <div className={styles.heroBlock}>
+        <p className={styles.heroIntro}>
+          <span className={styles.heroLine}>Здесь вы можете подобрать ноду под свои задачи.</span>
+          <span className={styles.heroLine}>От бюджетных плат без корпуса до полноразмерных нод с клавиатурой и цветным дисплеем.</span>
+          <span className={styles.heroLine}>Фильтры позволяют выбрать тип ноды и тип чипа.</span>
+          <span className={`${styles.heroLine} ${styles.heroMeta}`}>
+            Вопросы можно уточнить в нашем{' '}
+            <a href="https://t.me/meshwrks/2751" target="_blank" rel="noopener noreferrer">
+              Telegram-чате
+            </a>
+            .
+          </span>
+        </p>
+      </div>
 
       <div className={styles.topRail} ref={topRailRef}>
         <div className={styles.filterArea}>
-          <div className={styles.heroDivider} />
-
           <div className={styles.filterGroups}>
             <div className={styles.filterGroup} role="group" aria-label="Фильтр по типу">
-              <div className={styles.filterLabel}>Тип</div>
               <div className={styles.filterButtons}>
                 {CATEGORY_OPTIONS.map((option) => (
                   <button
@@ -159,7 +161,6 @@ export default function PortableCopyCatalog(): ReactNode {
             </div>
 
             <div className={styles.filterGroup} role="group" aria-label="Фильтр по чипу">
-              <div className={styles.filterLabel}>Чип</div>
               <div className={styles.filterButtons}>
                 {TECH_OPTIONS.map((option) => (
                   <button
@@ -209,7 +210,6 @@ export default function PortableCopyCatalog(): ReactNode {
         ) : (
           visibleCategories.map(({ category, label, devices }) => (
             <section key={category} className={styles.categorySection} aria-label={label}>
-              <h2 className={styles.categoryTitle}>{label}</h2>
               <div>{devices.map(renderDeviceCard)}</div>
             </section>
           ))

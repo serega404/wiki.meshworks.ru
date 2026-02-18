@@ -7,13 +7,14 @@ describe('PortableCopyCatalog', () => {
   it('renders default sections and cards from multiple categories', () => {
     render(<PortableCopyCatalog />);
 
-    expect(screen.getByRole('heading', { name: 'Универсальные' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Солнечные' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Отдельные платы' })).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: 'Универсальные' })).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: 'Солнечные' })).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: 'Отдельные платы' })).toBeInTheDocument();
 
     expect(screen.getByRole('heading', { name: 'ThinkNode M1' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'D5 Mini Solar Kit (Heltec V3)' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'FakeTec V5.5' })).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: 'Универсальные' })).not.toBeInTheDocument();
   });
 
   it('filters by category', () => {
@@ -21,9 +22,9 @@ describe('PortableCopyCatalog', () => {
 
     fireEvent.click(screen.getByRole('button', { name: '☀️ Солнечные' }));
 
-    expect(screen.queryByRole('heading', { name: 'Универсальные' })).not.toBeInTheDocument();
-    expect(screen.queryByRole('heading', { name: 'Отдельные платы' })).not.toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Солнечные' })).toBeInTheDocument();
+    expect(screen.queryByRole('region', { name: 'Универсальные' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('region', { name: 'Отдельные платы' })).not.toBeInTheDocument();
+    expect(screen.getByRole('region', { name: 'Солнечные' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'D5 Mini Solar Kit (Heltec V3)' })).toBeInTheDocument();
   });
 
@@ -43,7 +44,7 @@ describe('PortableCopyCatalog', () => {
     fireEvent.click(screen.getByRole('button', { name: '🧩 Отдельные платы' }));
     fireEvent.click(screen.getByRole('button', { name: '🟢 NRF' }));
 
-    expect(screen.getByRole('heading', { name: 'Отдельные платы' })).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: 'Отдельные платы' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'FakeTec V5.5' })).toBeInTheDocument();
     expect(screen.queryByRole('heading', { name: 'Heltec WiFi LoRa 32 (V3)' })).not.toBeInTheDocument();
     expect(screen.queryByRole('heading', { name: 'ThinkNode M1' })).not.toBeInTheDocument();
@@ -61,5 +62,12 @@ describe('PortableCopyCatalog', () => {
     expect(within(typeGroup).getByRole('button', { name: 'Все' })).toHaveAttribute('aria-pressed', 'true');
     fireEvent.click(within(techGroup).getByRole('button', { name: '🟢 NRF' }));
     expect(within(techGroup).getByRole('button', { name: '🟢 NRF' })).toHaveAttribute('aria-pressed', 'true');
+  });
+
+  it('renders two-level device description text blocks', () => {
+    render(<PortableCopyCatalog />);
+
+    expect(screen.getByText('Готовая нода с GPS в компактном корпусе, ориентированная на мобильные и автономные сценарии.')).toBeInTheDocument();
+    expect(screen.getByText('Подходит для выездных станций, навигации и трекинга.')).toBeInTheDocument();
   });
 });
