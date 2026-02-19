@@ -3,7 +3,7 @@ import Head from '@docusaurus/Head';
 import NotFoundContent from '@theme-original/NotFound/Content';
 import type {Props} from '@theme/NotFound/Content';
 
-export default function NotFoundContentWrapper(props: Props): JSX.Element {
+export default function NotFoundContentWrapper(props: Props) {
   return (
     <>
       <Head>
