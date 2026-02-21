@@ -220,6 +220,22 @@
   background: #eef7de;
 }
 
+.mobileHelpDisclosure {
+  display: none;
+}
+
+.mobileHelpSummary {
+  list-style: none;
+}
+
+.mobileHelpSummary::-webkit-details-marker {
+  display: none;
+}
+
+.mobileHelpContent {
+  min-width: 0;
+}
+
 .sideHelp {
   position: sticky;
   top: calc(var(--ifm-navbar-height, 56px) + var(--space-2));
@@ -455,12 +471,22 @@
   background: var(--ifm-color-primary);
   transition: background-color 0.12s ease, border-color 0.12s ease;
   min-width: 0;
+  cursor: pointer;
+  font-family: var(--ifm-font-family-base);
+  appearance: none;
+  -webkit-appearance: none;
+  touch-action: manipulation;
 }
 
 .cta:hover {
   background: var(--ifm-color-primary-dark);
   border-color: var(--ifm-color-primary-dark);
   text-decoration: none;
+}
+
+.cta:focus-visible {
+  outline: 2px solid rgba(126, 184, 27, 0.9);
+  outline-offset: 2px;
 }
 
 .modalOverlay {
@@ -739,11 +765,61 @@
     justify-content: flex-start;
   }
 
+  .mobileHelpDisclosure {
+    display: block;
+    border: 1px solid var(--surface-border);
+    border-radius: var(--surface-radius);
+    background: var(--surface-bg-soft);
+    overflow: clip;
+  }
+
+  .mobileHelpSummary {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 0 38px 0 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-main);
+    cursor: pointer;
+  }
+
+  .mobileHelpSummary::after {
+    content: '+';
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    line-height: 1;
+    color: rgba(126, 184, 27, 0.95);
+  }
+
+  .mobileHelpDisclosure[open] .mobileHelpSummary::after {
+    content: '−';
+  }
+
+  .mobileHelpSummary:focus-visible {
+    outline: 2px solid rgba(126, 184, 27, 0.9);
+    outline-offset: 2px;
+  }
+
+  .mobileHelpContent {
+    padding: 0 12px 12px;
+  }
+
+  .mobileHelpContent .sideHelpSubTitle {
+    margin-top: 0;
+  }
+
   .sideHelp {
-    position: static;
-    width: 100%;
-    max-inline-size: 64ch;
-    justify-self: stretch;
+    display: none;
+  }
+
+  :global([data-theme='light']) .mobileHelpDisclosure {
+    border-color: rgba(17, 24, 39, 0.08);
+    background: #ffffff;
   }
 
   .deviceCard {
@@ -810,6 +886,27 @@
 }
 
 @media (max-width: 768px) {
+  .modalOverlay {
+    padding: 10px;
+  }
+
+  .modal {
+    max-height: calc(100dvh - 20px);
+    overflow: auto;
+  }
+
+  .modalActions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .modalButtonPrimary,
+  .modalButtonSecondary {
+    width: 100%;
+    min-height: 40px;
+  }
+
   .filterArea {
     padding: 10px;
   }
