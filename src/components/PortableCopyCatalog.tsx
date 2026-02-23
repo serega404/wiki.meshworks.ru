@@ -145,14 +145,8 @@ export default function PortableCopyCatalog(): ReactNode {
       });
     });
 
-    const byCategory =
-      categoryFilter === 'all' ? all : all.filter((entry) => entry.category === categoryFilter);
-
-    return filterByTech(
-      byCategory.map((entry) => entry.device),
-      techFilter,
-    );
-  }, [categoryFilter, techFilter]);
+    return all.map((entry) => entry.device);
+  }, []);
 
   const featuredKeys = useMemo(() => {
     return new Set(featuredDevices.map(getDeviceKey));
