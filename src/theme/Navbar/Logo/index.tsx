@@ -22,7 +22,7 @@ export default function Logo() {
 
         <span className="mwBrandText">
           <span className="mwBrandName">MeshWorks</span>
-          <span className="mwBrandSub">Все о меш сетях</span>
+          <span className="mwBrandSub">Все о mesh-сетях</span>
         </span>
       </Link>
     </div>
