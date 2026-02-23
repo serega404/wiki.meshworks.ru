@@ -22,7 +22,7 @@ export default function Logo(): JSX.Element {
 
         <span className="mwBrandText">
           <span className="mwBrandName">MeshWorks</span>
-          <span className="mwBrandSub">wiki.meshworks.ru</span>
+          <span className="mwBrandSub">Все о меш сетях</span>
         </span>
       </Link>
     </div>

@@ -164,7 +164,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           routeBasePath: '/',
-          breadcrumbs: false,
+          breadcrumbs: true,
           editUrl: 'https://github.com/MeshWorksRussia/wiki.meshworks.ru/edit/main/',
           admonitions: {
             keywords: ['favorite'],
@@ -255,8 +255,8 @@ const config: Config = {
                   href: '/manifest.json',
                 },
                 {
-                  tagName: 'meta',
-                  name: 'theme-color',
+                 tagName: 'meta',
+                 name: 'theme-color',
                   content: '#b3ff00',
                 },
               ],

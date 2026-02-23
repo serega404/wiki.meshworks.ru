@@ -20,24 +20,6 @@ type NetNode = {
 type Edge = {
   a: number;
   b: number;
-  lengthN: number; // normalized length for speed scaling
-};
-
-type Packet = {
-  edgeIndex: number;
-  t: number; // 0..1
-  dir: 1 | -1;
-  speed: number; // units per second in t-space
-  alpha: number;
-  size: number;
-};
-
-type Pulse = {
-  x: number;
-  y: number;
-  radius: number;
-  alpha: number;
-  lineWidth: number;
 };
 
 function useDocusaurusTheme(): ThemeMode {
@@ -186,10 +168,7 @@ function generateNetwork(seed: number, nodeCount: number): { nodes: NetNode[]; e
       if (!edgesMap.has(key)) {
         const a = Math.min(n.id, m.id);
         const b = Math.max(n.id, m.id);
-        const na = nodes[a];
-        const nb = nodes[b];
-        const lengthN = Math.sqrt((na.x - nb.x) ** 2 + (na.y - nb.y) ** 2);
-        edgesMap.set(key, { a, b, lengthN });
+        edgesMap.set(key, { a, b });
       }
     }
   }
@@ -206,13 +185,6 @@ export function NetworkMapBackground() {
   const tokenElRef = useRef<HTMLElement | null>(null);
   const paletteRef = useRef<Palette | null>(null);
 
-  const packetsRef = useRef<Packet[]>([]);
-  const pulsesRef = useRef<Pulse[]>([]);
-  const animationRef = useRef<number>(0);
-  const lastTimeRef = useRef<number>(0);
-  const lastSpawnRef = useRef<number>(0);
-  const reduceMotionRef = useRef<boolean>(false);
-
   const { nodes, edges } = useMemo(() => generateNetwork(1337, 34), []);
 
   useEffect(() => {
@@ -226,15 +198,6 @@ export function NetworkMapBackground() {
     tokenElRef.current =
       (canvas.closest(".meshtastic-home") as HTMLElement | null) ??
       document.documentElement;
-
-    const mq = window.matchMedia?.("(prefers-reduced-motion: reduce)");
-    reduceMotionRef.current = Boolean(mq?.matches);
-    const onMotionChange = () => {
-      reduceMotionRef.current = Boolean(mq?.matches);
-    };
-    mq?.addEventListener?.("change", onMotionChange);
-
-    return () => mq?.removeEventListener?.("change", onMotionChange);
   }, []);
 
   useEffect(() => {
@@ -275,24 +238,6 @@ export function NetworkMapBackground() {
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    };
-
-    setCanvasSize();
-    window.addEventListener("resize", setCanvasSize);
-
-    const spawnPacket = () => {
-      if (edges.length === 0) return;
-      const edgeIndex = Math.floor(Math.random() * edges.length);
-      const dir: 1 | -1 = Math.random() < 0.5 ? 1 : -1;
-      const baseSpeed = 0.18 + Math.random() * 0.22;
-      packetsRef.current.push({
-        edgeIndex,
-        t: dir === 1 ? 0 : 1,
-        dir,
-        speed: baseSpeed,
-        alpha: 0.9,
-        size: 2.2 + Math.random() * 1.4,
-      });
     };
 
     const getNodePx = (nodeId: number) => {
@@ -361,83 +306,6 @@ export function NetworkMapBackground() {
       }
     };
 
-    const drawPulses = (palette: Palette, dt: number) => {
-      const intensity = window.innerWidth < 768 ? 0.55 : 1;
-      pulsesRef.current = pulsesRef.current
-        .map((p) => ({
-          ...p,
-          radius: p.radius + dt * 90,
-          alpha: p.alpha - dt * 1.2,
-        }))
-        .filter((p) => p.alpha > 0.01);
-
-      for (const p of pulsesRef.current) {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.strokeStyle = rgba(palette.primaryRgb, p.alpha * intensity);
-        ctx.lineWidth = p.lineWidth;
-        ctx.stroke();
-      }
-    };
-
-    const drawPackets = (palette: Palette, dt: number) => {
-      const intensity = window.innerWidth < 768 ? 0.55 : 1;
-      const next: Packet[] = [];
-      for (const packet of packetsRef.current) {
-        const edge = edges[packet.edgeIndex];
-        if (!edge) continue;
-        const a = getNodePx(edge.a);
-        const b = getNodePx(edge.b);
-
-        const speedScale = 0.9 + (1 - clamp01(edge.lengthN * 1.2)) * 0.4;
-        const tNext = packet.t + packet.dir * packet.speed * speedScale * dt;
-
-        const done = tNext > 1 || tNext < 0;
-        const t = done ? (packet.dir === 1 ? 1 : 0) : tNext;
-
-        const x = a.x + (b.x - a.x) * t;
-        const y = a.y + (b.y - a.y) * t;
-
-        const tailT = clamp01(t - packet.dir * 0.08);
-        const tx = a.x + (b.x - a.x) * tailT;
-        const ty = a.y + (b.y - a.y) * tailT;
-
-        const grad = ctx.createLinearGradient(tx, ty, x, y);
-        grad.addColorStop(0, rgba(palette.primaryRgb, 0));
-        grad.addColorStop(1, rgba(palette.primaryRgb, packet.alpha * (palette.isDark ? 0.55 : 0.45) * intensity));
-
-        ctx.lineWidth = 2;
-        ctx.strokeStyle = grad;
-        ctx.beginPath();
-        ctx.moveTo(tx, ty);
-        ctx.lineTo(x, y);
-        ctx.stroke();
-
-        ctx.save();
-        ctx.globalCompositeOperation = "lighter";
-        ctx.shadowColor = rgba(palette.primaryRgb, (palette.isDark ? 0.22 : 0.12) * intensity);
-        ctx.shadowBlur = palette.isDark ? 12 : 10;
-        ctx.fillStyle = rgba(palette.primaryRgb, packet.alpha * 0.55 * intensity);
-        ctx.beginPath();
-        ctx.arc(x, y, packet.size, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-
-        if (done) {
-          pulsesRef.current.push({
-            x,
-            y,
-            radius: 2,
-            alpha: (palette.isDark ? 0.22 : 0.16) * intensity,
-            lineWidth: 1,
-          });
-        } else {
-          next.push({ ...packet, t: tNext, alpha: packet.alpha });
-        }
-      }
-      packetsRef.current = next;
-    };
-
     const renderStatic = () => {
       const palette =
         paletteRef.current ??
@@ -456,47 +324,18 @@ export function NetworkMapBackground() {
       drawNodes(palette);
     };
 
-    const animate = (time: number) => {
-      const palette = paletteRef.current;
-      if (!palette) {
-        animationRef.current = requestAnimationFrame(animate);
-        return;
-      }
-
-      const dtMs = time - (lastTimeRef.current || time);
-      lastTimeRef.current = time;
-      const dt = Math.min(0.05, Math.max(0.001, dtMs / 1000));
-
-      if (reduceMotionRef.current) {
-        renderStatic();
-        animationRef.current = requestAnimationFrame(animate);
-        return;
-      }
-
-      const spawnIntervalMs = window.innerWidth < 768 ? 700 : 520;
-      if (time - lastSpawnRef.current > spawnIntervalMs) {
-        spawnPacket();
-        if (Math.random() < 0.15) spawnPacket();
-        lastSpawnRef.current = time;
-      }
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      drawBackground(palette);
-      drawEdges(palette);
-      drawPulses(palette, dt);
-      drawPackets(palette, dt);
-      drawNodes(palette);
-
-      animationRef.current = requestAnimationFrame(animate);
+    const onResize = () => {
+      setCanvasSize();
+      renderStatic();
     };
 
-    animationRef.current = requestAnimationFrame(animate);
+    onResize();
+    window.addEventListener("resize", onResize);
 
     return () => {
-      window.removeEventListener("resize", setCanvasSize);
-      cancelAnimationFrame(animationRef.current);
+      window.removeEventListener("resize", onResize);
     };
-  }, [edges, nodes]);
+  }, [edges, nodes, resolvedTheme]);
 
   return <canvas ref={canvasRef} />;
 }

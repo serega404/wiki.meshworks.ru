@@ -1,6 +1,6 @@
 import Link from "@docusaurus/Link";
 import React from "react";
-import { ArrowRight, Download, GlobeIcon, SmartphoneIcon, Terminal, UsersIcon } from "@/components/icons/lucide";
+import { ArrowRight, GlobeIcon, Radio, Signal } from "@/components/icons/lucide";
 import styles from "./homepage.module.css";
 
 type Scenario = {
@@ -10,46 +10,29 @@ type Scenario = {
   secondaryHref?: string;
   secondaryLabel?: string;
   icon: React.ReactNode;
+  disabled?: boolean;
 };
 
 const scenarios: Scenario[] = [
   {
-    title: "Купить готовую ноду",
-    description: "Подбор готовых устройств и плат под разные сценарии.",
-    href: "/catalog-devices",
-    icon: <SmartphoneIcon />,
+    title: "Meshtastic",
+    description: "Запускается за минуты. Работает на тысячах устройств. Идеально для активного покрытия.",
+    href: "/introduction",
+    icon: <Radio />,
   },
   {
-    title: "Собрать DIY‑ноду",
-    description: "Самосборка, модули и идеи для кастомных конфигураций.",
-    href: "/devices/diy",
-    icon: <Terminal />,
+    title: "MeshCore",
+    description: "Лёгкий mesh‑стек для LoRa с упором на минимализм и автономность.",
+    href: "https://github.com/meshcore-dev/MeshCore",
+    icon: <Signal />,
+    disabled: true,
   },
   {
-    title: "Прошить устройство",
-    description: "Как залить прошивку Meshtastic на популярные платы.",
-    href: "/node-setup/firmware",
-    icon: <Download />,
-  },
-  {
-    title: "Настроить регион и каналы",
-    description: "Частоты, параметры, ключи и совместимость с сетью.",
-    href: "/node-setup/configuration",
+    title: "Reticulum",
+    description: "Сетевой стек для автономных и распределённых сетей разных типов.",
+    href: "https://reticulum.network/",
     icon: <GlobeIcon />,
-  },
-  {
-    title: "Выбрать роль устройства",
-    description: "Client/Router/Repeater и другие роли — что выбрать и зачем.",
-    href: "/node-setup/roles",
-    icon: <UsersIcon />,
-  },
-  {
-    title: "Нода не работает",
-    description: "Типовые ошибки и быстрые проверки перед тем, как писать в чат.",
-    href: "/troubleshooting",
-    secondaryHref: "/troubleshooting/not-visible",
-    secondaryLabel: "Устройство не видно",
-    icon: <UsersIcon />,
+    disabled: true,
   },
 ];
 
@@ -57,8 +40,8 @@ export function HomepageFeatures() {
   return (
     <section aria-label="Features">
       <div className={styles.sectionHeader}>
-        <h2>Сценарии и маршруты</h2>
-        <p>Выберите задачу — и откройте нужный раздел, без лишнего поиска.</p>
+        <h2>Технологии</h2>
+        <p>Mesh‑связь может быть разной. Ниже — ключевые протоколы и стеки, с которыми работает сообщество MeshWorks.</p>
       </div>
 
       <div className={styles.grid3}>
@@ -67,26 +50,36 @@ export function HomepageFeatures() {
             key={scenario.title}
             className={styles.card}
           >
-            <div className={styles.statHeader}>
-              <h3 className={styles.cardTitle}>
-                <Link to={scenario.href} className={styles.cardTitleLink}>
-                  {scenario.title}
-                </Link>
-              </h3>
-              <div className={styles.statIcon} aria-hidden="true">
-                {scenario.icon}
+              <div className={styles.statHeader}>
+                <h3 className={styles.cardTitle}>
+                  {scenario.disabled ? (
+                    <span className={styles.cardTitleLink} aria-disabled="true">
+                      {scenario.title}
+                    </span>
+                  ) : (
+                    <Link to={scenario.href} className={styles.cardTitleLink}>
+                      {scenario.title}
+                    </Link>
+                  )}
+                </h3>
+                <div className={styles.statIcon} aria-hidden="true">
+                  {scenario.icon}
+                </div>
               </div>
-            </div>
-            <p className={styles.cardText}>{scenario.description}</p>
-            <div className={styles.cardFooterRow}>
-              <Link to={scenario.href} className={styles.cardLink}>
-                Открыть <ArrowRight style={{ width: 16, height: 16 }} />
-              </Link>
-              {scenario.secondaryHref && scenario.secondaryLabel ? (
-                <Link to={scenario.secondaryHref} className={styles.cardLinkSecondary}>
-                  {scenario.secondaryLabel}
-                </Link>
-              ) : null}
+              <p className={styles.cardText}>{scenario.description}</p>
+              <div className={styles.cardFooterRow}>
+                {scenario.disabled ? (
+                  <span className={styles.cardLinkSecondary}>В разработке</span>
+                ) : (
+                  <Link to={scenario.href} className={styles.cardLink}>
+                    Открыть <ArrowRight style={{ width: 16, height: 16 }} />
+                  </Link>
+                )}
+                {scenario.secondaryHref && scenario.secondaryLabel ? (
+                  <Link to={scenario.secondaryHref} className={styles.cardLinkSecondary}>
+                    {scenario.secondaryLabel}
+                  </Link>
+                ) : null}
             </div>
           </div>
         ))}

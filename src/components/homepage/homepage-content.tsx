@@ -1,9 +1,7 @@
 import { EcosystemStats } from "@/components/homepage/ecosystem-stats";
-import { HomepageFaq } from "@/components/homepage/homepage-faq";
 import { HomepageDownloads } from "@/components/homepage/homepage-downloads";
 import { HomepageFeatures } from "@/components/homepage/homepage-features";
 import { NetworkMapBackground } from "@/components/homepage/network-map-background";
-import links from "@/data/links.json";
 import Link from "@docusaurus/Link";
 import React from "react";
 import clsx from "clsx";
@@ -17,55 +15,58 @@ export function HomePageContent() {
       </div>
 
       <main className={clsx("container", styles.main)}>
-        <section className={styles.hero} aria-label="Hero">
-          <div>
-            <h1 className={styles.heroTitle}>
-              Meshtastic <span className={styles.heroTitleAccent}>на русском</span>
-            </h1>
+        <div className={styles.slides}>
+          <section className={clsx(styles.slide, styles.hero)} aria-label="Hero">
+            <div>
+              <h1 className={styles.heroTitle}>
+                Связь без интернета.
+                <br />
+                <span className={styles.heroTitleAccent}>Везде.</span>
+              </h1>
 
-            <div className={styles.heroLead}>
-              <p>
-                MeshWorks Wiki — русскоязычная база знаний о Meshtastic: выбор устройств, прошивка и настройка ноды,
-                антенны и дальность, типовые проблемы и рабочие чек‑листы.
-              </p>
+              <div className={styles.heroLead}>
+                <p>
+                  MeshWorks — сообщество энтузиастов mesh‑сетей. Создаём инструменты для автономной связи, развиваем
+                  покрытие, делимся знаниями.
+                </p>
+              </div>
+
+              <div className={styles.ctaRow}>
+                <Link className={clsx("button button--primary button--lg", styles.ctaPrimary)} to="/start">
+                  База знаний
+                </Link>
+                <a
+                  className={clsx("button button--secondary button--lg", styles.ctaSecondary)}
+                  href="https://t.me/meshwrks"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Telegram
+                </a>
+                <a
+                  className={clsx("button button--secondary button--lg", styles.ctaSecondary)}
+                  href="https://malla.meshworks.ru/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Карта сети
+                </a>
+              </div>
             </div>
 
-            <div className={styles.ctaRow}>
-              <Link className={clsx("button button--primary button--lg", styles.ctaPrimary)} to={links.getStarted}>
-                С чего начать
-              </Link>
-              <Link className={clsx("button button--secondary button--lg", styles.ctaSecondary)} to="/catalog-devices">
-                Каталог устройств
-              </Link>
-              <Link className={clsx("button button--secondary button--lg", styles.ctaSecondary)} to="/node-setup">
-                Настроить ноду
-              </Link>
+            <div>
+              <EcosystemStats />
             </div>
+          </section>
 
-            <nav className={styles.quickLinks} aria-label="Быстрые ссылки">
-              <Link to={links.docs}>Введение</Link>
-              <Link to="/antennas">Антенны</Link>
-              <Link to="/troubleshooting">Решение проблем</Link>
-              <Link to="/community">Сообщества</Link>
-            </nav>
-          </div>
+          <section className={clsx(styles.slide, styles.section)} aria-label="Scenarios">
+            <HomepageFeatures />
+          </section>
 
-          <div>
-            <EcosystemStats />
-          </div>
-        </section>
-
-        <section className={styles.section} aria-label="Scenarios">
-          <HomepageFeatures />
-        </section>
-
-        <section className={styles.section} aria-label="FAQ">
-          <HomepageFaq />
-        </section>
-
-        <section className={styles.section} aria-label="Clients">
-          <HomepageDownloads />
-        </section>
+          <section className={clsx(styles.slide, styles.section)} aria-label="Clients">
+            <HomepageDownloads />
+          </section>
+        </div>
       </main>
     </div>
   );

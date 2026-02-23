@@ -9,11 +9,31 @@ type FaqItem = {
 
 const items: FaqItem[] = [
   {
-    question: "Что такое Meshtastic?",
+    question: "Что такое MeshWorks?",
     answer: (
       <>
-        Meshtastic — это LoRa mesh‑связь: ноды обмениваются сообщениями напрямую и могут ретранслировать их дальше.
-        Начните с раздела{" "}
+        MeshWorks — сообщество энтузиастов mesh‑сетей. Мы создаём инструменты для автономной связи, собираем базу знаний и
+        помогаем запускать сети в реальных сценариях.
+      </>
+    ),
+  },
+  {
+    question: "Где общаться и задавать вопросы?",
+    answer: (
+      <>
+        Основной канал и чат —{" "}
+        <a href="https://t.me/meshwrks" target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>
+          Telegram MeshWorks
+        </a>
+        . Там же — анонсы, помощь новичкам и обсуждения.
+      </>
+    ),
+  },
+  {
+    question: "Какие технологии используются?",
+    answer: (
+      <>
+        В фокусе — LoRa и mesh‑протоколы (например, Meshtastic), а также альтернативные стеки для автономных сетей. Начните с{" "}
         <Link to="/introduction" className={styles.inlineLink}>
           «Введение»
         </Link>
@@ -25,13 +45,13 @@ const items: FaqItem[] = [
     question: "Нужен ли интернет или оператор?",
     answer: (
       <>
-        Нет. Сеть работает без интернета и сотовой связи. Интернет может быть нужен только для карты/интеграций (по
-        желанию).
+        Нет. Mesh‑связь работает без интернета и сотовой сети. Интернет может быть нужен только для карты/интеграций (по
+        желанию), но сама связь от него не зависит.
       </>
     ),
   },
   {
-    question: "С чего начать, если нода только куплена?",
+    question: "С чего начать?",
     answer: (
       <>
         Откройте{" "}
@@ -63,7 +83,7 @@ const items: FaqItem[] = [
     ),
   },
   {
-    question: "Почему маленькая дальность и как её улучшить?",
+    question: "Как улучшить дальность?",
     answer: (
       <>
         Почти всегда решают антенна, высота установки и правильный регион/частоты. Начните с{" "}
@@ -86,14 +106,51 @@ const items: FaqItem[] = [
       </>
     ),
   },
+  {
+    question: "Как поддержать MeshWorks?",
+    answer: (
+      <>
+        Если проект полезен — поддержите нас на{" "}
+        <a href="https://boosty.to/meshworks" target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>
+          Boosty
+        </a>
+        . Это помогает развивать инструменты и контент.
+      </>
+    ),
+  },
+  {
+    question: "Цифры сообщества",
+    answer: (
+      <>
+        YouTube — 30 000, Telegram — 8 000, Boosty — 1, всего — 38 001.
+      </>
+    ),
+  },
+  {
+    question: "Где смотреть эфиры и обзоры?",
+    answer: (
+      <>
+        Канал MeshWorks на{" "}
+        <a
+          href="https://www.youtube.com/@meshworks_ru?sub_confirmation=1"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.inlineLink}
+        >
+          YouTube
+        </a>
+        : эфиры, обзоры и руководства.
+      </>
+    ),
+  },
 ];
 
 export function HomepageFaq() {
   return (
     <section aria-label="FAQ">
       <div className={styles.sectionHeader}>
-        <h2>Частые вопросы</h2>
-        <p>Короткие ответы и ссылки на подробные инструкции в вики.</p>
+        <h2>Сообщество и ответы</h2>
+        <p>Короткие ответы и ссылки на инструменты MeshWorks и разделы вики.</p>
       </div>
 
       <div className={styles.faqList}>
@@ -111,9 +168,9 @@ export function HomepageFaq() {
       </div>
 
       <div className={styles.faqCta}>
-        <Link className="button button--primary" to="/troubleshooting">
-          Открыть раздел «Решение проблем»
-        </Link>
+        <a className="button button--primary" href="https://t.me/meshwrks" target="_blank" rel="noopener noreferrer">
+          Перейти в Telegram MeshWorks
+        </a>
       </div>
     </section>
   );
