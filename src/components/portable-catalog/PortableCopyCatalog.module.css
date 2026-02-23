@@ -366,7 +366,6 @@
   overflow: hidden;
   min-width: 0;
   flex-shrink: 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--text-main) 15%, transparent);
 }
 
 .deviceImage {
