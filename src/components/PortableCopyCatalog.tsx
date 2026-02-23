@@ -351,14 +351,17 @@ export default function PortableCopyCatalog(): ReactNode {
             <div className={styles.helpBlock}>
               <p className={styles.helpTitle}>Тип ноды</p>
               <ul className={styles.helpList}>
-                <li>
-                  <strong>🧭 Универсальные</strong> - готовые переносные ноды.
+                <li className={styles.helpItem}>
+                  <Compass className={styles.helpIcon} />
+                  <span><strong>Универсальные</strong> - готовые переносные ноды.</span>
                 </li>
-                <li>
-                  <strong>☀️ Солнечные</strong> - автономные комплекты для стационара.
+                <li className={styles.helpItem}>
+                  <Sun className={styles.helpIcon} />
+                  <span><strong>Солнечные</strong> - автономные комплекты для стационара.</span>
                 </li>
-                <li>
-                  <strong>🧩 Отдельные платы</strong> - DIY-платы и проекты для самостоятельной сборки.
+                <li className={styles.helpItem}>
+                  <Puzzle className={styles.helpIcon} />
+                  <span><strong>Отдельные платы</strong> - DIY-платы и проекты для самостоятельной сборки.</span>
                 </li>
               </ul>
             </div>
@@ -366,11 +369,13 @@ export default function PortableCopyCatalog(): ReactNode {
             <div className={styles.helpBlock}>
               <p className={styles.helpTitle}>Чип-платформы</p>
               <ul className={styles.helpList}>
-                <li>
-                  <strong>🟢 NRF</strong> - ниже мощность, выше автономность, лучше для батарейных узлов.
+                <li className={styles.helpItem}>
+                  <Battery className={styles.helpIcon} />
+                  <span><strong>NRF</strong> - ниже мощность, выше автономность, лучше для батарейных узлов.</span>
                 </li>
-                <li>
-                  <strong>⚡ ESP</strong> - выше производительность и функции, но быстрее расходует батарею.
+                <li className={styles.helpItem}>
+                  <Zap className={styles.helpIcon} />
+                  <span><strong>ESP</strong> - выше производительность и функции, но быстрее расходует батарею.</span>
                 </li>
               </ul>
             </div>

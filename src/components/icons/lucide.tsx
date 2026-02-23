@@ -310,3 +310,53 @@ export function Cpu(props: IconProps): React.JSX.Element {
   );
 }
 
+export function Compass(props: IconProps): React.JSX.Element {
+  return (
+    <svg {...baseProps(props)}>
+      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+export function Sun(props: IconProps): React.JSX.Element {
+  return (
+    <svg {...baseProps(props)}>
+      <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 1v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 21v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M4.22 4.22l1.42 1.42" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M18.36 18.36l1.42 1.42" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M1 12h2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M21 12h2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M4.22 19.78l1.42-1.42" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M18.36 5.64l1.42-1.42" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+export function Puzzle(props: IconProps): React.JSX.Element {
+  return (
+    <svg {...baseProps(props)}>
+      <path d="M19.439 12.5a2.5 2.5 0 0 0-2.439-2.5h-1a2.5 2.5 0 0 1-2.5-2.5V6.5a2.5 2.5 0 0 0-2.5-2.5H7.5a2.5 2.5 0 0 0-2.5 2.5V7.5a2.5 2.5 0 0 1-2.5 2.5h-1a2.5 2.5 0 0 0-2.5 2.5v3.5a2.5 2.5 0 0 0 2.5 2.5h1a2.5 2.5 0 0 1 2.5 2.5V21.5a2.5 2.5 0 0 0 2.5-2.5H11a2.5 2.5 0 0 1 2.5-2.5V17.5a2.5 2.5 0 0 0 2.5-2.5h1a2.5 2.5 0 0 0 2.5-2.5v-3.5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+export function Battery(props: IconProps): React.JSX.Element {
+  return (
+    <svg {...baseProps(props)}>
+      <rect x="1" y="6" width="18" height="12" rx="2" ry="2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M23 13v-2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+export function Zap(props: IconProps): React.JSX.Element {
+  return (
+    <svg {...baseProps(props)}>
+      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
