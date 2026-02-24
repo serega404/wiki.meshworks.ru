@@ -482,6 +482,28 @@
   margin-top: 4px;
 }
 
+[data-theme='light'] .deviceFeatures {
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(11, 18, 26, 0.92);
+  box-shadow: 0 12px 26px rgba(18, 24, 35, 0.12);
+}
+
+[data-theme='light'] .deviceFeatures .featureItem {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+[data-theme='light'] .deviceFeatures .featureActive {
+  color: var(--mesh-accent);
+  opacity: 1;
+}
+
+[data-theme='light'] .deviceFeatures .featureInactive {
+  color: rgba(255, 255, 255, 0.42);
+  opacity: 1;
+}
+
 .featureItem {
   display: flex;
   align-items: center;

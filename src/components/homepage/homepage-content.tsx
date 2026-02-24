@@ -2,6 +2,7 @@ import { EcosystemStats } from "@/components/homepage/ecosystem-stats";
 import { HomepageDownloads } from "@/components/homepage/homepage-downloads";
 import { HomepageFeatures } from "@/components/homepage/homepage-features";
 import { NetworkMapBackground } from "@/components/homepage/network-map-background";
+import { FileText, MapPin, Send } from "@/components/icons/lucide";
 import Link from "@docusaurus/Link";
 import React from "react";
 import clsx from "clsx";
@@ -32,23 +33,35 @@ export function HomePageContent() {
               </div>
 
               <div className={styles.ctaRow}>
-                <Link className={clsx("button button--primary button--lg", styles.ctaPrimary)} to="/introduction">
+                <Link
+                  className={clsx("button button--primary button--lg", styles.ctaPrimary, styles.ctaButton, styles.ctaWithIcon)}
+                  to="/introduction"
+                >
+                  <span className={styles.ctaIcon} aria-hidden="true">
+                    <FileText />
+                  </span>
                   База знаний
                 </Link>
                 <a
-                  className={clsx("button button--secondary button--lg", styles.ctaSecondary)}
+                  className={clsx("button button--secondary button--lg", styles.ctaSecondary, styles.ctaButton, styles.ctaWithIcon)}
                   href="https://t.me/meshwrks"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
+                  <span className={styles.ctaIcon} aria-hidden="true">
+                    <Send />
+                  </span>
                   Telegram
                 </a>
                 <a
-                  className={clsx("button button--secondary button--lg", styles.ctaSecondary)}
+                  className={clsx("button button--secondary button--lg", styles.ctaSecondary, styles.ctaButton, styles.ctaWithIcon)}
                   href="https://malla.meshworks.ru/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
+                  <span className={styles.ctaIcon} aria-hidden="true">
+                    <MapPin />
+                  </span>
                   Карта сети
                 </a>
               </div>

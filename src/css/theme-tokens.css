@@ -5,7 +5,7 @@
 
 :root {
   /* Brand */
-  --mesh-accent: #b3ff00;
+  --mesh-accent: #c6fd50;
   --mesh-accent-strong: color-mix(in srgb, var(--mesh-accent) 88%, #000 12%);
   --mesh-accent-soft: color-mix(in srgb, var(--mesh-accent) 22%, transparent);
 
@@ -98,8 +98,7 @@
 }
 
 [data-theme='light'] {
-  /* On light backgrounds neon lime loses contrast; use a darker brand-adjacent green. */
-  --mesh-accent: #168a00;
+  --mesh-accent: #c6fd50;
   --ifm-background-color: #f5f7fb;
   --ifm-background-surface-color: #ffffff;
   --ifm-navbar-background-color: rgba(245, 247, 251, 0.84);
@@ -160,7 +159,7 @@
   --mesh-alert-note-bg: #171e2d;
   --mesh-alert-note-border: #2a3249;
   --mesh-alert-note-icon: #94a5ff;
-  --mesh-alert-favorite-bg: rgba(179, 255, 0, 0.06);
-  --mesh-alert-favorite-border: rgba(179, 255, 0, 0.18);
+  --mesh-alert-favorite-bg: rgba(198, 253, 80, 0.06);
+  --mesh-alert-favorite-border: rgba(198, 253, 80, 0.18);
   --mesh-alert-favorite-icon: var(--mesh-accent);
 }

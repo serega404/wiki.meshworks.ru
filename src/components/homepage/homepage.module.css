@@ -123,6 +123,28 @@
   align-items: center;
 }
 
+.ctaButton {
+  font-size: 0.95rem;
+}
+
+.ctaWithIcon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.ctaIcon {
+  display: inline-flex;
+  width: 1.1em;
+  height: 1.1em;
+  flex: 0 0 auto;
+}
+
+.ctaIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
 .ctaPrimary {
   position: relative;
   overflow: hidden;
