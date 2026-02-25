@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 
 export function useDocusaurusTheme(): { resolvedTheme: "light" | "dark" } {
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    if (typeof document !== "undefined") {
+      return document.documentElement.getAttribute("data-theme") === "dark"
+        ? "dark"
+        : "light";
+    }
+    return "dark";
+  });
 
   useEffect(() => {
-    const getTheme = (): "light" | "dark" => {
-      if (typeof document !== "undefined") {
-        return document.documentElement.getAttribute("data-theme") === "dark"
-          ? "dark"
-          : "light";
-      }
-      return "dark";
-    };
-
-    setTheme(getTheme());
+    const getTheme = (): "light" | "dark" =>
+      document.documentElement.getAttribute("data-theme") === "dark"
+        ? "dark"
+        : "light";
 
     const observer = new MutationObserver((mutations) => {
       for (const mutation of mutations) {
@@ -26,12 +27,10 @@ export function useDocusaurusTheme(): { resolvedTheme: "light" | "dark" } {
       }
     });
 
-    if (typeof document !== "undefined") {
-      observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ["data-theme"],
-      });
-    }
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
 
     return () => observer.disconnect();
   }, []);

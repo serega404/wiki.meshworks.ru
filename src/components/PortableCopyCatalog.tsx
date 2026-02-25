@@ -314,7 +314,7 @@ export default function PortableCopyCatalog(): ReactNode {
 
           <div className={styles.controlBar}>
             <div className={styles.filterGroups}>
-              <div className={`${styles.filterButtons} ${styles.filterControlChips}`}>
+              <div className={`${styles.filterButtons} ${styles.filterControlChips}`} role="group" aria-label="Фильтр по типу">
                 {CATEGORY_OPTIONS.map((option) => (
                   <button
                     key={option.value}
@@ -329,12 +329,13 @@ export default function PortableCopyCatalog(): ReactNode {
                 ))}
               </div>
               <div className={styles.divider} />
-              <div className={`${styles.filterButtons} ${styles.filterControlChips}`}>
+              <div className={`${styles.filterButtons} ${styles.filterControlChips}`} role="group" aria-label="Фильтр по чипу">
                 {TECH_OPTIONS.map((option) => (
                   <button
                     key={option.value}
                     className={`${styles.filterButton} ${techFilter === option.value ? styles.filterButtonActive : ''}`}
                     type="button"
+                    aria-label={option.label}
                     aria-pressed={techFilter === option.value}
                     onClick={() => setTechFilter(option.value)}
                   >

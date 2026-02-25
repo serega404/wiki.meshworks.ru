@@ -18,6 +18,7 @@ export function shuffle<T>(array: readonly T[]): T[] {
 }
 
 export function clampTail<T>(arr: T[], max: number): T[] {
+  if (max <= 0) return [];
   return arr.length <= max ? arr : arr.slice(-max);
 }
 
