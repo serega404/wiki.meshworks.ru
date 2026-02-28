@@ -123,22 +123,11 @@
   flex-wrap: wrap;
 }
 
-.filterLabelDesktop,
-.filterLabelMobile {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
 .filterIcon {
   width: 16px;
   height: 16px;
   display: block;
   flex-shrink: 0;
-}
-
-.filterLabelMobile {
-  display: none;
 }
 
 .filterButton {
@@ -1030,15 +1019,5 @@
 @media (max-width: 480px) {
   .catalog {
     --catalog-gutter: 10px;
-  }
-}
-
-@media (max-width: 996px) {
-  .filterLabelDesktop {
-    display: none;
-  }
-
-  .filterLabelMobile {
-    display: flex;
   }
 }

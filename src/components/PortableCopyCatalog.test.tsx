@@ -17,10 +17,11 @@ describe('PortableCopyCatalog', () => {
 
     expect(screen.getByRole('region', { name: 'Универсальные' })).toBeInTheDocument();
     expect(screen.getByRole('region', { name: 'Солнечные' })).toBeInTheDocument();
-    expect(screen.getByRole('region', { name: 'Отдельные платы' })).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: 'Платы' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Универсальные' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Солнечные' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Отдельные платы' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Платы' })).toBeInTheDocument();
+    expect(screen.queryByText('Отдельные платы')).not.toBeInTheDocument();
 
     expect(screen.getByRole('heading', { name: 'ThinkNode M1' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'D5 Mini Solar Kit (Heltec V3)' })).toBeInTheDocument();
@@ -33,7 +34,7 @@ describe('PortableCopyCatalog', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Солнечные' }));
 
     expect(screen.queryByRole('region', { name: 'Универсальные' })).not.toBeInTheDocument();
-    expect(screen.queryByRole('region', { name: 'Отдельные платы' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('region', { name: 'Платы' })).not.toBeInTheDocument();
     expect(screen.getByRole('region', { name: 'Солнечные' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'D5 Mini Solar Kit (Heltec V3)' })).toBeInTheDocument();
   });
@@ -51,12 +52,12 @@ describe('PortableCopyCatalog', () => {
   it('applies combined category and tech filters', () => {
     render(<PortableCopyCatalog />);
 
-    fireEvent.click(screen.getByRole('button', { name: 'Отдельные платы' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Платы' }));
 
     const techGroup = screen.getByRole('group', { name: 'Фильтр по чипу' });
     fireEvent.click(within(techGroup).getByRole('button', { name: 'NRF' }));
 
-    expect(screen.getByRole('region', { name: 'Отдельные платы' })).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: 'Платы' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'FakeTec V5.5' })).toBeInTheDocument();
     expect(screen.queryByRole('heading', { name: 'ThinkNode M1' })).not.toBeInTheDocument();
   });
@@ -85,15 +86,15 @@ describe('PortableCopyCatalog', () => {
   it('sorts by price ascending', () => {
     render(<PortableCopyCatalog />);
 
-    // Filter to "Отдельные платы" so we have a manageable subset
-    fireEvent.click(screen.getByRole('button', { name: 'Отдельные платы' }));
+    // Filter to "Платы" so we have a manageable subset
+    fireEvent.click(screen.getByRole('button', { name: 'Платы' }));
 
     // Change sort to "Сначала дешевле"
     const sortSelect = screen.getByRole('combobox', { name: 'Сортировка' });
     fireEvent.change(sortSelect, { target: { value: 'price-asc' } });
 
     // Get all card headings within the boards section
-    const boardsSection = screen.getByRole('region', { name: 'Отдельные платы' });
+    const boardsSection = screen.getByRole('region', { name: 'Платы' });
     const headings = within(boardsSection).getAllByRole('heading', { level: 3 });
     const titles = headings.map((h) => h.textContent);
 
@@ -104,12 +105,12 @@ describe('PortableCopyCatalog', () => {
   it('sorts by price descending', () => {
     render(<PortableCopyCatalog />);
 
-    fireEvent.click(screen.getByRole('button', { name: 'Отдельные платы' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Платы' }));
 
     const sortSelect = screen.getByRole('combobox', { name: 'Сортировка' });
     fireEvent.change(sortSelect, { target: { value: 'price-desc' } });
 
-    const boardsSection = screen.getByRole('region', { name: 'Отдельные платы' });
+    const boardsSection = screen.getByRole('region', { name: 'Платы' });
     const headings = within(boardsSection).getAllByRole('heading', { level: 3 });
     const titles = headings.map((h) => h.textContent);
 
@@ -178,7 +179,7 @@ describe('PortableCopyCatalog', () => {
       DEVICE_CATEGORY_LABELS: {
         universal: 'Универсальные',
         solar: 'Солнечные',
-        boards: 'Отдельные платы',
+        boards: 'Платы',
       },
       DEVICE_DATA: {
         universal: [],

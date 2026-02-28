@@ -12,7 +12,6 @@ type SortOption = 'default' | 'price-asc' | 'price-desc';
 type FilterOption<T extends string> = {
   value: T;
   label: string;
-  shortLabel?: string;
   Icon?: React.ComponentType<React.SVGProps<SVGSVGElement> & { className?: string }>;
 };
 
@@ -20,7 +19,7 @@ const CATEGORY_OPTIONS: Array<FilterOption<CategoryFilter>> = [
   { value: 'all', label: 'Все' },
   { value: 'universal', label: 'Универсальные', Icon: Compass },
   { value: 'solar', label: 'Солнечные', Icon: Sun },
-  { value: 'boards', label: 'Отдельные платы', shortLabel: 'Платы', Icon: Cpu },
+  { value: 'boards', label: 'Платы', Icon: Cpu },
 ];
 
 const TECH_OPTIONS: Array<FilterOption<TechFilter>> = [
@@ -32,25 +31,10 @@ const TECH_OPTIONS: Array<FilterOption<TechFilter>> = [
 function renderOptionLabel<T extends string>(option: FilterOption<T>): ReactNode {
   const Icon = option.Icon;
 
-  if (!option.shortLabel) {
-    return (
-      <>
-        {Icon ? <Icon className={styles.filterIcon} aria-hidden="true" focusable="false" /> : null}
-        {option.label}
-      </>
-    );
-  }
-
   return (
     <>
-      <span className={styles.filterLabelDesktop} aria-hidden="true">
-        {Icon ? <Icon className={styles.filterIcon} aria-hidden="true" focusable="false" /> : null}
-        {option.label}
-      </span>
-      <span className={styles.filterLabelMobile} aria-hidden="true">
-        {Icon ? <Icon className={styles.filterIcon} aria-hidden="true" focusable="false" /> : null}
-        {option.shortLabel}
-      </span>
+      {Icon ? <Icon className={styles.filterIcon} aria-hidden="true" focusable="false" /> : null}
+      {option.label}
     </>
   );
 }
@@ -373,7 +357,7 @@ export default function PortableCopyCatalog(): ReactNode {
                 </li>
                 <li className={styles.helpItem}>
                   <Cpu className={styles.helpIcon} />
-                  <span><strong>Отдельные платы</strong> - DIY-платы и проекты для самостоятельной сборки.</span>
+                  <span><strong>Платы</strong> - платы и проекты для самостоятельной сборки нод.</span>
                 </li>
               </ul>
             </div>
