@@ -924,10 +924,22 @@
   }
   
   .viewControls {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
     width: 100%;
-    justify-content: space-between;
     margin-left: 0;
     margin-top: 8px;
+  }
+
+  .sortWrapper {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .sortSelect {
+    width: 100%;
+    min-width: 0;
   }
   
   /* Reset List View to Stack on Mobile */
