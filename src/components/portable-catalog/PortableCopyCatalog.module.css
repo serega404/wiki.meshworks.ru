@@ -893,7 +893,32 @@
   }
   
   .filterGroups {
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .filterControlChips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+    min-width: 0;
+  }
+
+  .filterControlChips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filterButton {
+    scroll-snap-align: start;
   }
   
   .viewControls {
