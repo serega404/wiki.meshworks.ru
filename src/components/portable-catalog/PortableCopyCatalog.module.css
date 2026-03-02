@@ -313,6 +313,7 @@
   gap: var(--space-3);
   width: 100%;
   min-width: 0;
+  overflow-anchor: none;
 }
 
 .categorySection {
@@ -723,10 +724,19 @@
   box-shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
   padding: 16px;
   color: var(--text-main);
+
+  /* Local, non-neon accent for the modal only */
+  --modal-accent: 90 78% 32%;
+  --modal-accent-hover: 90 80% 27%;
+}
+
+:global(html[data-theme='dark']) .modal {
+  --modal-accent: 90 85% 34%;
+  --modal-accent-hover: 90 85% 29%;
 }
 
 .modal:focus-visible {
-  outline: 2px solid rgba(126, 184, 27, 0.9);
+  outline: 2px solid color-mix(in srgb, hsl(var(--modal-accent)) 85%, transparent);
   outline-offset: 2px;
 }
 
@@ -762,8 +772,8 @@
 }
 
 .modalClose:hover {
-  border-color: color-mix(in srgb, var(--mesh-accent) 45%, var(--surface-border));
-  background: color-mix(in srgb, var(--mesh-accent) 12%, var(--surface-bg));
+  border-color: color-mix(in srgb, hsl(var(--modal-accent)) 45%, var(--surface-border));
+  background: color-mix(in srgb, hsl(var(--modal-accent)) 10%, var(--surface-bg));
 }
 
 .modalText {
@@ -795,14 +805,14 @@
 }
 
 .modalButtonPrimary {
-  background: var(--ifm-color-primary);
-  border-color: var(--ifm-color-primary);
+  background: hsl(var(--modal-accent));
+  border-color: hsl(var(--modal-accent));
   color: #ffffff;
 }
 
 .modalButtonPrimary:hover {
-  background: var(--ifm-color-primary-dark);
-  border-color: var(--ifm-color-primary-dark);
+  background: hsl(var(--modal-accent-hover));
+  border-color: hsl(var(--modal-accent-hover));
 }
 
 .modalButtonSecondary {
@@ -812,14 +822,14 @@
 }
 
 .modalButtonSecondary:hover {
-  border-color: color-mix(in srgb, var(--mesh-accent) 45%, var(--surface-border));
-  background: color-mix(in srgb, var(--mesh-accent) 12%, var(--surface-bg));
+  border-color: color-mix(in srgb, hsl(var(--modal-accent)) 45%, var(--surface-border));
+  background: color-mix(in srgb, hsl(var(--modal-accent)) 10%, var(--surface-bg));
 }
 
 .modalButtonPrimary:focus-visible,
 .modalButtonSecondary:focus-visible,
 .modalClose:focus-visible {
-  outline: 2px solid color-mix(in srgb, var(--mesh-accent) 85%, transparent);
+  outline: 2px solid color-mix(in srgb, hsl(var(--modal-accent)) 85%, transparent);
   outline-offset: 2px;
 }
 
