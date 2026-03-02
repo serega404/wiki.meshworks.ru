@@ -6,7 +6,9 @@ sidebar_position: 1
 breadcrumbs: ["База знаний Meshtastic", "Введение в Meshtastic", "Принципы работы сети"]
 ---
 
-<img src="/img/wiki/intro-network-basics.png" alt="Intro network basics" class="docImage" />
+import MeshNetworkAnimation from '@site/src/components/introduction/MeshNetworkAnimation';
+
+<MeshNetworkAnimation className="docImage" />
 
 **Mesh-сеть** — это тип радиосети, в которой каждое устройство может обмениваться данными не только напрямую, но и через другие устройства. 
 Узлы сети объединяются в единую структуру, где каждый элемент одновременно является и приёмником, и передатчиком.
