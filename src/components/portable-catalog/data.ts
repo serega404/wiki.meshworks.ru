@@ -83,7 +83,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Функционально и удобно в поле, но потребляет больше энергии, чем nRF-решения.',
       ],
       price: '≈ 8 000 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005010658273299.html?sku_id=12000053102647412',
+      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005009074862574.html',
       tech: 'ESP',
     },
     {
