@@ -29,16 +29,34 @@ const enablePwa = process.env.NODE_ENV === 'production';
 const config: Config = {
   title: 'MeshWorks',
   tagline: 'База знаний MeshWorks',
-  favicon: 'img/favicon-light.png',
+  favicon: 'img/mw-logo-light.png',
   headTags: [
     {
       tagName: 'link',
-        attributes: {
-          rel: 'icon',
-          type: 'image/png',
-          href: '/img/favicon-light.png',
-        },
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/img/mw-logo-light.png',
+        media: '(prefers-color-scheme: light)',
       },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/img/mw-logo-dark.png',
+        media: '(prefers-color-scheme: dark)',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/img/mw-logo-light.png',
+      },
+    },
     {
       tagName: 'script',
       attributes: {
