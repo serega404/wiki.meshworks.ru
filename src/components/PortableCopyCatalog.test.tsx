@@ -2,6 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import PortableCopyCatalog from './PortableCopyCatalog';
+import { DEVICE_DATA } from './portable-catalog/data';
 
 /** Find a device card by its heading title and click the "Купить" button inside it. */
 function clickBuyForDevice(deviceTitle: string) {
@@ -13,6 +14,7 @@ function clickBuyForDevice(deviceTitle: string) {
 
 describe('PortableCopyCatalog', () => {
   it('copies device href from the share button with clipboard API and shows copied state', async () => {
+    const thinkNode = DEVICE_DATA.universal.find((device) => device.title === 'ThinkNode M1');
     const clipboardWriteText = vi.fn().mockResolvedValue(undefined);
     Object.defineProperty(navigator, 'clipboard', {
       configurable: true,
@@ -30,9 +32,8 @@ describe('PortableCopyCatalog', () => {
     await waitFor(() => {
       expect(clipboardWriteText).toHaveBeenCalledOnce();
     });
-    expect(clipboardWriteText).toHaveBeenCalledWith(
-      'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005008707258616.html',
-    );
+    expect(thinkNode?.href).toBeDefined();
+    expect(clipboardWriteText).toHaveBeenCalledWith(thinkNode!.href);
     expect(within(card).getByRole('button', { name: 'Ссылка на устройство скопирована' })).toBeInTheDocument();
   });
 
